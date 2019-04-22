@@ -6,17 +6,6 @@ var initialPos =
     lng: 40.0,
 }
 
-function initMap()
-{
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: initialPos,
-        zoom: 6,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-    });
-    infoWindow = new google.maps.InfoWindow;
-    updateLocations();
-}
-
 function updateLocations()
 {
     var arrayLength = locationDataArray.length;
@@ -29,6 +18,19 @@ function updateLocations()
     }
     
 }
+
+function initMap()
+{
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: initialPos,
+        zoom: 6,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+    });
+    infoWindow = new google.maps.InfoWindow;
+    updateLocations();
+}
+
+
 
 function addMarker(map, location)
 {

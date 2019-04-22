@@ -102,6 +102,9 @@ export class HomePage implements OnInit {
     });
   });
   google.maps.event.addListener(marker, 'click', () => {
+    infoWindow.open(this.map, marker);
+  });
+  google.maps.event.addListener(this.map, 'click', () =>{
     infoWindow.close(this.map, marker);
   });
 }

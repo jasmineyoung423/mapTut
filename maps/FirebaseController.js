@@ -10,7 +10,7 @@ locationsRef.on('value', function(snapshot)
 function shapshotToArray(snapshot)
 {
     var locationArray = [];
-    snapshot.foreach(function(childSnapshot)
+    snapshot.forEach(function(childSnapshot)
     {
         var item = childSnapshot.val();
         locationArray.push(item);

@@ -39,7 +39,7 @@ export class AddPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE,
     }
     this.camera.getPicture(options).then((imageData) => {
-      this.base64Image = "data:image/jpeg;base64Image," + imageData;
+      this.base64Image = "data:image/jpeg;base64," + imageData;
       this.location.picture = this.base64Image;
     }, (err) => {
       console.log("Error saving picture: ", err)
