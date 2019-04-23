@@ -5,6 +5,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-button size="large" (click)="loadMapPage()" routerLink="../home" routerDirection="forward">Map</ion-button>
-  <ion-button size="large" routerLink="/add" routerDirection="forward">Add</ion-button>
+  <ion-item>
+    <ion-label position="stacked">My best compliment was:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-button size="large" routerLink="/add" routerDirection="forward">I just complimented someone!</ion-button>
+  <ion-item>
+    <ion-label position="stacked">Compliments today:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Compliments this week:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Best compliment recieved:</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-button size="large" (click)="loadMapPage()" routerLink="../home" routerDirection="forward">Where my compliments at?</ion-button>
+  
 </ion-content>
