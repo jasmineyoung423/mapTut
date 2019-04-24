@@ -1,0 +1,45 @@
+body
+<style>
+.dimensions {
+    width: 1080px;
+    height: 1920px;
+
+}
+.bg-color{
+    background-color: #99CCFF;
+}
+
+.btn-color {
+    --ion-color-primary: #3880ff;
+    --ion-color-primary-rgb: 56, 128, 255;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #3171e0;
+    --ion-color-primary-tint: #4c8dff;
+}
+
+.title-stuff{
+    font-family: Rage;
+    font-style: italic;
+    background-color: #006600;
+}
+
+.sub-title{
+    background-color: white;
+    font-family: 'Times New Roman';
+}
+
+.box-size{
+    width: 360px;
+    height: 640px;
+}
+
+.center{
+    align-content: center;
+}
+
+.padding{
+    padding: 15px;
+}
+
+</style>
