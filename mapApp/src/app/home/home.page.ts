@@ -726,7 +726,7 @@ export class HomePage implements OnInit {
       }
     ]
   }
-]
+],
       { name: 'Neon' });
 
     this.style3 = new google.maps.StyledMapType([
