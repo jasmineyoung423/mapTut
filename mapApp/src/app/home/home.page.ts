@@ -540,7 +540,7 @@ export class HomePage implements OnInit {
   {
     featureType: 'poi.medical',
     elementType: 'geometry.fill',
-  "stylers: [
+  stylers: [
       {
         color: '#ff3cff'
       }
@@ -558,7 +558,7 @@ export class HomePage implements OnInit {
   {
     featureType: 'poi.place_of_worship',
     elementType: 'geometry',
-    styler": [
+    stylers: [
       {
         color: '#ffffff'
       }
@@ -639,7 +639,7 @@ export class HomePage implements OnInit {
   {
     featureType: 'road.local',
     elementType: 'geometry.stroke',
-  "stylers: [
+  stylers: [
       {
         color: '#0080ff'
       }
@@ -701,7 +701,7 @@ export class HomePage implements OnInit {
   },
   {
     featureType: 'transit.station.rail',
-    elementTyp": 'geometry.fill',
+    elementType: 'geometry.fill',
     stylers: [
       {
         color: '#ff0000'
