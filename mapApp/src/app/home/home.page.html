@@ -18,7 +18,7 @@
       <ion-button (click)="openActionSheet()">Icons</ion-button>
     </ion-list-header>
     <ion-item *ngFor="let location of locationsList$ | async" (click)="assignLocation(location)"
-      [routerLink]="['/list', locationTitle]"  routerDirection="forward">{{location.title | date: "MM/dd/yyyy hh:mm a"}}
+      [routerLink]="['/list', locationTitle]"  routerDirection="forward">{{location.content}}
     </ion-item>
   </ion-list>
 </ion-content>

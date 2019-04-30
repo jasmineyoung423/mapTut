@@ -17,6 +17,7 @@ export class AddPage implements OnInit {
     longitude: 0,
     title: '',
     picture: '',
+    thumbs: 0
   };
   constructor(private geolocation: Geolocation, private camera: Camera, public firebaseService: FirebaseService) { }
 
@@ -28,6 +29,7 @@ export class AddPage implements OnInit {
       console.log("Error getting location: ", error)
     });
   }
+  
   addLocation(location: Location){
     this.firebaseService.addLocation(location);
   }

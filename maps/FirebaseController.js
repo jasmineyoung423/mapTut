@@ -18,3 +18,4 @@ function shapshotToArray(snapshot)
     })
     locationDataArray = locationArray;
 }
+

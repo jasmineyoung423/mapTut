@@ -10,6 +10,7 @@ import 'firebase/storage';
 })
 export class FirebaseService {
   private locationListRef = this.db.list<Location>('locationData');
+  private recentListRef = this.db.list<Location>('recentData');
   public currentLocation: Location;
   public chosenIcon: string = "http://maps.google.com/mapfiles/kml/paddle/red-circle.png";
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
@@ -20,16 +21,6 @@ export class FirebaseService {
 
   getCurrentLocation(){
     return this.currentLocation;
-  }
-  
-  setIcon(icon: string)
-  {
-    this.chosenIcon = "http://maps.google.com/mapfiles/kml/paddle/" + icon;
-  }
-
-  getIcon()
-  {
-    return this.chosenIcon;
   }
 
   getLocationsList(){

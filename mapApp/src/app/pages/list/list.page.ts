@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './list.page.html',
   styleUrls: ['./list.page.scss'],
 })
-export class ListPage implements OnInit {
+export class ListPage implements OnInit
+{
   public LocationKey: string;
   public location: Location;
   public base64Image: string;
@@ -24,13 +25,17 @@ export class ListPage implements OnInit {
   {
     console.log("Got: " + this.activatedRoute.snapshot.paramMap.get('locationTitle'));
     this.base64Image = this.location.picture;
+    var taco = document.getElementById('thumbs');
+    taco.innerHTML = 'Thumbs: ' + this.location.thumbs;
   }
 
-  editLocation(location: Location){
+  editLocation(location: Location)
+  {
     this.firebaseService.editLocation(location);
   }
 
-  deleteLocation(location: Location){
+  deleteLocation(location: Location)
+  {
     this.firebaseService.deleteLocation(location);
   }
 
@@ -47,6 +52,14 @@ export class ListPage implements OnInit {
     }, (err) => {
 
     });
+  }
+
+  addThumbs()
+  {
+    this.location.thumbs++;
+    this.firebaseService.editLocation(this.location);
+    var taco = document.getElementById('thumbs');
+    taco.innerHTML = 'Thumbs: ' + this.location.thumbs;
   }
 
 }

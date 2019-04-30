@@ -6,4 +6,5 @@ export interface Location
     longitude: number,
     title: string,
     picture: string,
+    thumbs: number,
 }

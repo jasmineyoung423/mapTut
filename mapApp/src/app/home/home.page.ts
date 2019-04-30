@@ -5,7 +5,9 @@ import { Location } from '../models/location.model';
 import 'rxjs-compat/add/operator/map';
 import { Observable } from 'rxjs-compat/Observable';
 import { Router } from '@angular/router';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, IonSelect } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { ModalPage } from '@ionic/core/dist';
 
 declare var google;
 
@@ -23,48 +25,54 @@ export class HomePage implements OnInit {
   public locationTitle: string;
   currentLoc: Location;
   locationKey: string;
+  mapStyle: any;
+  style1: any;
+  style2: any;
+  style3: any;
+  style4: any;
   gmarkers = [];
+  chosenIcon: any;
   icons = [
-  'red-circle.png',
-  'red-square.png',
-  'red-diamond.png',
-  'red-stars.png',
-  'red-bnk.png',
-  'grn-circle.png',
-  'grn-square.png',
-  'grn-diamond.png',
-  'grn-stars.png',
-  'grn-bnk.png',
-  'blu-circle.png',
-  'blu-square.png',
-  'blu-diamond.png',
-  'blu-stars.png',
-  'blu-bnk.png',
-  'purple-circle.png',
-  'purple-square.png',
-  'purple-diamond.png',
-  'purple-stars.png',
-  'purple-bnk.png',
-  'pink-circle.png',
-  'pink-square.png',
-  'pink-diamond.png',
-  'pink-stars.png',
-  'pink-bnk.png',
-  'ylw-circle.png',
-  'ylw-square.png',
-  'ylw-diamond.png',
-  'ylw-stars.png',
-  'ylw-bnk.png',
-  'orange-circle.png',
-  'orange-square.png',
-  'orange-diamond.png',
-  'orange-stars.png',
-  'orange-bnk.png',
-  'wht-circle.png',
-  'wht-square.png',
-  'wht-diamond.png',
-  'wht-stars.png',
-  'wht-bnk.png',];
+    'red-circle.png',
+    'red-square.png',
+    'red-diamond.png',
+    'red-stars.png',
+    'red-blank.png',
+    'grn-circle.png',
+    'grn-square.png',
+    'grn-diamond.png',
+    'grn-stars.png',
+    'grn-blank.png',
+    'blu-circle.png',
+    'blu-square.png',
+    'blu-diamond.png',
+    'blu-stars.png',
+    'blu-blank.png',
+    'purple-circle.png',
+    'purple-square.png',
+    'purple-diamond.png',
+    'purple-stars.png',
+    'purple-blank.png',
+    'pink-circle.png',
+    'pink-square.png',
+    'pink-diamond.png',
+    'pink-stars.png',
+    'pink-blank.png',
+    'ylw-circle.png',
+    'ylw-square.png',
+    'ylw-diamond.png',
+    'ylw-stars.png',
+    'ylw-blank.png',
+    'orange-circle.png',
+    'orange-square.png',
+    'orange-diamond.png',
+    'orange-stars.png',
+    'orange-blank.png',
+    'wht-circle.png',
+    'wht-square.png',
+    'wht-diamond.png',
+    'wht-stars.png',
+    'wht-blank.png'];
 
   constructor(private router: Router, private geolocation: Geolocation, public firebaseService: FirebaseService, public actionSheetController: ActionSheetController) {
     this.locationsList$ = this.firebaseService.getLocationsList().snapshotChanges().map(changes => {
@@ -77,12 +85,15 @@ export class HomePage implements OnInit {
   ngOnInit() {
     let mapOptions = {
       zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeContol: false,
+      mapTypeControlOptions: {
+        mapTypeIds: ['roadmap', 'style1', 'style2', 'style3',
+          'style4']
+      },
       streetViewControl: false,
       fullScreenControl: false,
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    this.setStyles();
     this.firebaseService.getLocationsList().valueChanges().subscribe(res => {
       for (let item of res) {
         this.addMarker(item);
@@ -90,6 +101,10 @@ export class HomePage implements OnInit {
         this.map.setCenter(this.position);
       }
     });
+    this.map.mapTypes.set('style1', this.style1);
+    this.map.mapTypes.set('style2', this.style2);
+    this.map.mapTypes.set('style3', this.style3);
+    this.map.mapTypes.set('style4', this.style4);
   }
 
   onContextChange(ctxt: string): void {
@@ -168,8 +183,7 @@ export class HomePage implements OnInit {
     });
   }
 
-  iconName(icon:string)
-  {
+  iconName(icon: string) {
     return "http://maps.google.com/mapfiles/kml/paddle/" + icon;
   }
 
@@ -178,7 +192,7 @@ export class HomePage implements OnInit {
       header: 'Icons',
       buttons: [{
         text: 'Red with Circle (Default)',
-        icon: this.iconName(this.icons[0]),
+        icon: '<img src=' + this.iconName(this.icons[0]) + '>',
         handler: () => this.changeIcon(0)
       }, {
         text: 'Red with Square',
@@ -336,8 +350,323 @@ export class HomePage implements OnInit {
         text: 'White Blank',
         icon: this.iconName(this.icons[39]),
         handler: () => this.changeIcon(39)
-      },]
+      }]
     });
     await actionSheet.present();
+  }
+
+  setStyles() {
+    this.style1 = new google.maps.StyledMapType([
+      {
+        elementType: 'geometry',
+        stylers: [
+          { color: '#f5f5f5' }
+        ]
+      },
+      {
+        elementType: 'labels.icon',
+        stylers: [
+          { visibility: 'off' }
+        ]
+      },
+      {
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#616161' }
+        ]
+      },
+      {
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#f5f5f5' }
+        ]
+      }, {
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#bdbdbd' }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#eeeeee' }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#757575' }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#e5e5e5' }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#9e9e9e' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#ffffff' }
+        ]
+      },
+      {
+        featureType: 'road.arterial',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#757575' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#dadada' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#616161' }
+        ]
+      },
+      {
+        featureType: 'road.local',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#9e9e9e' }
+        ]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#e5e5e5' }
+        ]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#eeeeee' }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#c9c9c9' }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#9e9e9e' }
+        ]
+      }
+    ],
+      { name: 'Greyscale' });
+      
+    this.style2 = new google.maps.StyledMapType(
+      { name: 'Rainbow' });
+
+    this.style3 = new google.maps.StyledMapType(
+      { name: 'Pastel' });
+
+    this.style4 = new google.maps.StyledMapType([
+      {
+        elementType: 'geometry',
+        stylers: [
+          { color: '#1d2c4d' }
+        ]
+      },
+      {
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#8ec3b9' }
+        ]
+      },
+      {
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#1a3646' }
+        ]
+      },
+      {
+        featureType: 'administrative.country',
+        elementType: 'geometry.stroke',
+        stylers: [
+          { color: '#4b6878' }
+        ]
+      },
+      {
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#64779e' }
+        ]
+      },
+      {
+        featureType: 'administrative.province',
+        elementType: 'geometry.stroke',
+        stylers: [
+          { color: '#4b6878' }
+        ]
+      },
+      {
+        featureType: 'landscape.man_made',
+        elementType: 'geometry.stroke',
+        stylers: [
+          { color: '#334e87' }
+        ]
+      },
+      {
+        featureType: 'landscape.natural',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#023e58' }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#283d6a' }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#6f9ba5' }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#1d2c4d' }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry.fill',
+        stylers: [
+          { color: '#023e58' }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#3C7680' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#304a7d' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#98a5be' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#1d2c4d' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#2c6675' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
+          { color: '#255763' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#b0d5ce' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#023e58' }
+        ]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#98a5be' }
+        ]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#1d2c4d' }
+        ]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'geometry.fill',
+        stylers: [
+          { color: '#283d6a' }
+        ]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#3a4762' }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#0e1626' }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#4e6d70' }
+        ]
+      }],
+    { name: 'Dark' });
   }
 }
