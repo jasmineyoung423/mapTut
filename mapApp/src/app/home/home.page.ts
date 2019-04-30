@@ -480,11 +480,127 @@ export class HomePage implements OnInit {
       }
     ],
       { name: 'Greyscale' });
-      
-    this.style2 = new google.maps.StyledMapType(
-      { name: 'Rainbow' });
 
-    this.style3 = new google.maps.StyledMapType(
+    this.style2 = new google.maps.StyledMapType(
+      { name: 'Neon' });
+
+    this.style3 = new google.maps.StyledMapType([
+      {
+        elementType: 'geometry',
+        stylers: [
+          { color: '#fffee0' }
+        ]
+      },
+      {
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#ffeac9' }
+        ]
+      },
+      {
+        elementType: 'labels.text.stroke',
+        stylers: [
+          { color: '#ffffff' }
+        ]
+      },
+      {
+        featureType: 'administrative.locality',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#ffcfaa' }
+        ]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#ffcfaa' }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#e7f9d6' }
+        ]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#e7f9d6' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#ffeaea' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [
+          { color: '#ffdbdb' }
+        ]
+      },
+      {
+        featureType: 'road',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#ffeaea' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#f7f2ff' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [
+          { color: '#eee2ff' }
+        ]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#f7f2ff' }
+        ]
+      },
+      {
+        featureType: 'transit',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#ffdbbf' }
+        ]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#ffdbbf' }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [
+          { color: '#e2edff' }
+        ]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [
+          { color: '#e2edff' }
+        ]
+      }],
       { name: 'Pastel' });
 
     this.style4 = new google.maps.StyledMapType([
@@ -667,6 +783,6 @@ export class HomePage implements OnInit {
           { color: '#4e6d70' }
         ]
       }],
-    { name: 'Dark' });
+      { name: 'Dark' });
   }
 }
