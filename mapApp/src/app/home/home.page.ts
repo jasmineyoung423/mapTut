@@ -482,6 +482,251 @@ export class HomePage implements OnInit {
       { name: 'Greyscale' });
 
     this.style2 = new google.maps.StyledMapType(
+			[
+  {
+    featureType: 'landscape',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#dfffbf'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.attraction',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#ff5151'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.attraction',
+    elementType: 'labels.text.fill',
+    stylers: [
+      {
+        color: '#ffffff'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.attraction',
+    elementType: 'labels.text.stroke',
+    stylers: [
+      {
+        color: '#808080'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.business',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#c0ff82'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.medical',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#ff80ff'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.medical',
+    elementType: 'geometry.fill',
+  "stylers: [
+      {
+        color: '#ff3cff'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.park',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#00ff00'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.place_of_worship',
+    elementType: 'geometry',
+    styler": [
+      {
+        color: '#ffffff'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.school',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#ff8000'
+      }
+    ]
+  },
+  {
+    featureType: 'poi.sports_complex',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#1300ff'
+      }
+    ]
+  },
+  {
+    featureType: 'road.arterial',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#ffff00'
+      }
+    ]
+  },
+  {
+    featureType: 'road.arterial',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#fdc502'
+      }
+    ]
+  },
+  {
+    featureType: 'road.arterial',
+    elementType: 'geometry.stroke',
+    stylers: [
+      {
+        color: '#ff8000'
+      }
+    ]
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#ffff80'
+      }
+    ]
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'geometry.stroke',
+    stylers: [
+      {
+        color: '#ff8000'
+      }
+    ]
+  },
+  {
+    featureType: 'road.local',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#ffff00'
+      }
+    ]
+  },
+  {
+    featureType: 'road.local',
+    elementType: 'geometry.stroke',
+  "stylers: [
+      {
+        color: '#0080ff'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.line',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#ffffff'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.line',
+    elementType: 'geometry.stroke',
+    stylers: [
+      {
+        color: '#ffffff'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.station.airport',
+    elementType: 'geometry.fill',
+    stylers: [
+      {
+        color: '#8080ff'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.station.airport',
+    elementType: 'geometry.stroke',
+    stylers: [
+      {
+        color: '#ffff00'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.station.airport',
+    elementType: 'labels.text',
+    stylers: [
+      {
+        color: '#ffffff'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.station.airport',
+    elementType: 'labels.text.stroke',
+    stylers: [
+      {
+        color: '#400040'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.station.rail',
+    elementTyp": 'geometry.fill',
+    stylers: [
+      {
+        color: '#ff0000'
+      }
+    ]
+  },
+  {
+    featureType: 'transit.station.rail',
+    elementType: 'geometry.stroke',
+    stylers: [
+      {
+        color: '#ff0000'
+      }
+    ]
+  },
+  {
+    featureType: 'water',
+    elementType: 'geometry',
+    stylers: [
+      {
+        color: '#00ffff'
+      }
+    ]
+  }
+]
       { name: 'Neon' });
 
     this.style3 = new google.maps.StyledMapType([
