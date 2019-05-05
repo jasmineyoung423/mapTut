@@ -7,20 +7,24 @@
     <ion-content>
         <ion-item>
             <ion-label position="stacked" class="sub-title center">My best compliment was:</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="compliments.best"></ion-input>
         </ion-item>
         <ion-button size="large" routerLink="/add" routerDirection="forward">I just complimented someone!</ion-button>
         <ion-item>
             <ion-label position="stacked" class="sub-title center">Compliments today:</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="compliments.today"></ion-input>
+			<button ion-button large full color="dark" (click)="refresh()">Refresh</button>
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="sub-title center">Compliments this week:</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="compliments.week"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="stacked" class="sub-title center">Best compliment received:</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="compliments.received"></ion-input>
         </ion-item>
         <ion-button size="large" (click)="loadMapPage()" routerLink="../home" routerDirection="forward">Where my compliments at?</ion-button>
+		<ion-content>
+		  <ion-button size="large" (click)="updateCompliments(compliments)" routerLink="../login" routerDirection="forward">Save Compliments</ion-button>
+		<ion-item>
     </ion-content>
