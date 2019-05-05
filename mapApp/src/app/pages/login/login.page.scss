@@ -3,8 +3,8 @@
     height: 1920px;
 }
 
-.bg-color {
-    background-color: #99CCFF;
+ion-content {
+    --ion-background-color: #99CCFF;
 }
 
 .btn-color {
@@ -27,7 +27,7 @@
 
 .sub-title {
     color: white;
-    background-color: #99CCFF;
+    background-color: #3880ff;
     font-size: 20px;
     padding-bottom: 40px;
 }
@@ -43,4 +43,8 @@
 
 .padding {
     padding: 15px;
+}
+
+ion-input{
+    background-color: white;
 }

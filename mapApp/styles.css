@@ -5,6 +5,11 @@ body
     height: 1920px;
 
 }
+
+body {
+    background-color: red;
+}
+
 .bg-color{
     background-color: #99CCFF;
 }
