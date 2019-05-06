@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Location } from '../models/location.model';
+import { Compliments } from '../models/compliments.model';
 import 'firebase/storage';
 
 @Injectable({
@@ -10,9 +11,10 @@ import 'firebase/storage';
 })
 export class FirebaseService {
   private locationListRef = this.db.list<Location>('locationData');
-  private recentListRef = this.db.list<Location>('recentData');
   public currentLocation: Location;
   public chosenIcon: string = "http://maps.google.com/mapfiles/kml/paddle/red-circle.png";
+  public complimentsData: Compliments;
+
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   setCurrentLocation(location: Location){
@@ -24,7 +26,7 @@ export class FirebaseService {
   }
 
   getLocationsList(){
-    return this.locationListRef;
+	return this.locationListRef;
   }
 
   addLocation(location: Location){
@@ -37,5 +39,13 @@ export class FirebaseService {
 
   deleteLocation(location: Location){
     return this.locationListRef.remove(location.key);
+  }
+
+  getCompliments(){
+	  return this.complimentsData;
+  }
+
+  updateCompliments(compliments: Compliments){
+	  return this.complimentsData = compliments;
   }
 }

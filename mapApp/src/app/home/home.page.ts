@@ -6,8 +6,6 @@ import 'rxjs-compat/add/operator/map';
 import { Observable } from 'rxjs-compat/Observable';
 import { Router } from '@angular/router';
 import { ActionSheetController, IonSelect } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
-import { ModalPage } from '@ionic/core/dist';
 
 declare var google;
 
