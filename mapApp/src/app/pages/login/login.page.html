@@ -10,12 +10,7 @@
             <ion-input [(ngModel)]="compliments.best"></ion-input>
         </ion-item>
         <ion-button size="large" routerLink="/add" routerDirection="forward">I just complimented someone!</ion-button>
-
-		<ion-item>
-	      <ion-datetime display-format="MM/DD/YYYY" min="2019" picker-format="MMMM DD YYYY" [(ngModel)]="compliments.title"></ion-datetime>
-	    </ion-item>
-
-		<ion-item>
+        <ion-item>
             <ion-label position="stacked" class="sub-title center">Compliments today:</ion-label>
             <ion-input [(ngModel)]="compliments.today"></ion-input>
 			<button ion-button large full color="dark" (click)="refresh()">Refresh</button>
