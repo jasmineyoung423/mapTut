@@ -11,14 +11,14 @@ import { FirebaseService } from '../../services/firebase.service';
 export class LoginPage implements OnInit {
 
 	compliments: Compliments = {
-      best: '',
-      today: '',
-      week: '',
-      received: '',
+      best: best,
+      today: today,
+      week: week,
+      received: received,
     };
 
   constructor(private router: Router, public firebaseService: FirebaseService) {
-	  this.compliments = this.firebaseService.getCompliments(compliments);
+	  this.compliments = this.firebaseService.getCompliments(complimentsData);
   }
 
   ngOnInit()
