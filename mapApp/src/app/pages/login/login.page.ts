@@ -23,11 +23,17 @@ export class LoginPage implements OnInit {
 
   ngOnInit()
   {
-    this.compliments = this.firebaseService.complimentsData;
+    this.firebaseService.getComplimentsList().valueChanges().subscribe(res => {
+      for (let item of res) {
+        this.compliments = item;
+      }
+    });
   }
 
   updateCompliments(compliments: Compliments){
-    this.firebaseService.updateCompliments(compliments);
+    console.log(compliments);
+    
+    this.firebaseService.addCompliment(compliments);
   }
 
   loadMapPage()

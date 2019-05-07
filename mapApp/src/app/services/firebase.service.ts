@@ -14,38 +14,51 @@ export class FirebaseService {
   public currentLocation: Location;
   public chosenIcon: string = "http://maps.google.com/mapfiles/kml/paddle/red-circle.png";
   public complimentsData: Compliments;
+  private complimentListRef = this.db.list<Compliments>('complimentData');
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
-  setCurrentLocation(location: Location){
+  setCurrentLocation(location: Location) {
     this.currentLocation = location;
   }
 
-  getCurrentLocation(){
+  getCurrentLocation() {
     return this.currentLocation;
   }
 
-  getLocationsList(){
-	return this.locationListRef;
+  getLocationsList() {
+    return this.locationListRef;
   }
 
-  addLocation(location: Location){
+  addLocation(location: Location) {
     return this.locationListRef.push(location);
   }
 
-  editLocation(location: Location){
+  editLocation(location: Location) {
     return this.locationListRef.update(location.key, location);
   }
 
-  deleteLocation(location: Location){
+  deleteLocation(location: Location) {
     return this.locationListRef.remove(location.key);
   }
 
-  getCompliments(){
-	  return this.complimentsData;
+  getCompliments() {
+    return this.complimentsData;
   }
 
-  updateCompliments(compliments: Compliments){
-	  return this.complimentsData = compliments;
+  updateCompliments(compliments: Compliments) {
+    return this.complimentsData = compliments;
+  }
+
+  getComplimentsList() {
+    return this.complimentListRef;
+  }
+
+  addCompliment(compliments: Compliments) {
+    return this.complimentListRef.push(compliments);
+  }
+
+  editCompliment(compliments: Compliments) {
+    return this.complimentListRef.update(compliments.key, compliments);
   }
 }
